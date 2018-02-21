@@ -495,7 +495,7 @@ public class VisaDAOWS extends DBTester {
                                error);
     }
 
-}
+
 
   /**
    * @return the pooled
@@ -512,3 +512,4 @@ public class VisaDAOWS extends DBTester {
   public void setDirectConnection(boolean directConnection) {
       super.setDirectConnection(directConnection);
   }
+}
