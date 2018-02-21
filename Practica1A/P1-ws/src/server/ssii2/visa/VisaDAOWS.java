@@ -10,8 +10,8 @@
  *
  */
 
-package server.ssii2.visa;
-import server.ssii2.visa.*;
+package ssii2.visa;
+import ssii2.visa.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
