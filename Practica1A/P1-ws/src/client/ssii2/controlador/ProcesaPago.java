@@ -152,19 +152,20 @@ private void printAddresses(HttpServletRequest request, HttpServletResponse resp
             reenvia("/formdatosvisa.jsp", request, response);
             return;
         }
-    // Realiza una instanciacion del servicio VisaDaoWS
-    VisaDAOWSService service = new VisaDAOWSService();
-		// Obtenemos el dao a partir de la llamada al servicio
-    VisaDAOWS dao = service. getVisaDAOWSPort ();
-
-    String url=getServletContext().getInitParameter("server-url");
-
-    BindingProvider bp = (BindingProvider) dao;
 
     try{
-        bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, url);
+        // Realiza una instanciacion del servicio VisaDaoWS
+        VisaDAOWSService service = new VisaDAOWSService();
+        // Obtenemos el dao a partir de la llamada al servicio
+        VisaDAOWS dao = service. getVisaDAOWSPort ();
+
+        // Obtenemos la direccion del xml
+        String direccion =getServletContext().getInitParameter("service-url");
+
+        BindingProvider bp = (BindingProvider) dao;
+        bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, direccion);
     } catch (Exception e){
-        enviaError(new Exception("Fallo al encontrar servidor"), request, response);
+        enviaError(new Exception("Error. Server unreacheable"), request, response);
         return;
     }
 
