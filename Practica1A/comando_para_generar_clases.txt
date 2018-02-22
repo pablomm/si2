@@ -1,0 +1,1 @@
+wsimport -d build/client/WEB-INF/classes/ http://10.1.9.1:8080/P1-ws-ws/VisaDAOWSService?wsdl

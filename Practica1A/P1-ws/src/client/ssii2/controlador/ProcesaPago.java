@@ -49,7 +49,7 @@ import ssii2.visa.VisaDAOWSService; // Stub generado automáticamente
 import ssii2.visa.VisaDAOWS; // Stub generado automáticamente
 
 import javax.xml.ws.WebServiceRef;
-
+import javax.xml.ws.BindingProvider;
 
 /**
  *
@@ -152,12 +152,12 @@ private void printAddresses(HttpServletRequest request, HttpServletResponse resp
             reenvia("/formdatosvisa.jsp", request, response);
             return;
         }
-
+    VisaDAOWS dao=null;
     try{
         // Realiza una instanciacion del servicio VisaDaoWS
         VisaDAOWSService service = new VisaDAOWSService();
         // Obtenemos el dao a partir de la llamada al servicio
-        VisaDAOWS dao = service. getVisaDAOWSPort ();
+        dao = service. getVisaDAOWSPort ();
 
         // Obtenemos la direccion del xml
         String direccion =getServletContext().getInitParameter("service-url");

@@ -13,6 +13,7 @@
 package ssii2.controlador;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,6 +22,7 @@ import ssii2.visa.PagoBean;
 import ssii2.visa.VisaDAOWSService; // Stub generado automáticamente
 import ssii2.visa.VisaDAOWS; // Stub generado automáticamente
 
+import javax.xml.ws.BindingProvider;
 /**
  *
  * @author phaya
@@ -50,12 +52,12 @@ public class GetPagos extends ServletRaiz {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 
-
+      VisaDAOWS dao=null;
       try{
           // Realiza una instanciacion del servicio VisaDaoWS
           VisaDAOWSService service = new VisaDAOWSService();
           // Obtenemos el dao a partir de la llamada al servicio
-          VisaDAOWS dao = service. getVisaDAOWSPort ();
+          dao = service. getVisaDAOWSPort ();
 
           // Obtenemos la direccion del xml
           String direccion =getServletContext().getInitParameter("service-url");
@@ -72,7 +74,8 @@ public class GetPagos extends ServletRaiz {
 
 		/* Petici&oacute;n de los pagos para el comercio */
     /* Conversion para que funcione como anteriormente */
-		PagoBean[] pagos = dao.getPagos(idComercio).toArray(new PagoBean[pagosArraylist.size()]);
+    List<PagoBean> responsePagos = dao.getPagos(idComercio);
+		PagoBean[] pagos = responsePagos.toArray(new PagoBean[responsePagos.size()]);
 
         request.setAttribute(ATTR_PAGOS, pagos);
         reenvia("/listapagos.jsp", request, response);

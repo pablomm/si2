@@ -21,8 +21,6 @@
     -->
 
     <context-param>
-        <param-name>webmaster</param-name>
-        <param-value>david.nevadoc@estudiante.uam.es</param-value>
         <param-name>service-url</param-name>
         <param-value>http://10.1.9.1:8080/P1-ws-ws/VisaDAOWSService</param-value>
 

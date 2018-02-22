@@ -16,11 +16,12 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import ssii2.visa.PagoBean;
 
+import ssii2.visa.PagoBean;
 import ssii2.visa.VisaDAOWSService; // Stub generado automáticamente
 import ssii2.visa.VisaDAOWS; // Stub generado automáticamente
 
+import javax.xml.ws.BindingProvider;
 /**
  *
  * @author phaya
@@ -49,17 +50,18 @@ public class DelPagos extends ServletRaiz {
     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-
+      VisaDAOWS dao=null;
       try{
           // Realiza una instanciacion del servicio VisaDaoWS
           VisaDAOWSService service = new VisaDAOWSService();
           // Obtenemos el dao a partir de la llamada al servicio
-          VisaDAOWS dao = service. getVisaDAOWSPort ();
+          dao = service.getVisaDAOWSPort();
 
           // Obtenemos la direccion del xml
           String direccion =getServletContext().getInitParameter("service-url");
 
           BindingProvider bp = (BindingProvider) dao;
+      
           bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, direccion);
       } catch (Exception e){
           enviaError(new Exception("Error. Server unreacheable"), request, response);
