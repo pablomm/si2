@@ -393,8 +393,8 @@ public class VisaDAOWS extends DBTester {
      * @param idComercio
      * @return numero de registros afectados
      */
-    @WebMethod(exclude=true)
-    public int delPagos(String idComercio) {
+    @WebMethod(operationName="delPagos")
+    public int delPagos(@WebParam(name="idComercio") String idComercio) {
 
         PreparedStatement pstmt = null;
         Connection pcon = null;
