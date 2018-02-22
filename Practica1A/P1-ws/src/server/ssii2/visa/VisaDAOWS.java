@@ -330,12 +330,10 @@ public class VisaDAOWS extends DBTester {
         PreparedStatement pstmt = null;
         Connection pcon = null;
         ResultSet rs = null;
-        PagoBean[] ret = null;
         ArrayList<PagoBean> pagos = null;
         String qry = null;
 
         try {
-
             // Crear una conexion u obtenerla del pool
             pcon = getConnection();
             qry = SELECT_PAGOS_QRY;
@@ -365,9 +363,6 @@ public class VisaDAOWS extends DBTester {
                 pagos.add(p);
             }
 
-            ret = new PagoBean[pagos.size()];
-            ret = pagos.toArray(ret);
-
             // Cerramos / devolvemos la conexion al pool
             pcon.close();
 
@@ -389,7 +384,7 @@ public class VisaDAOWS extends DBTester {
             }
         }
 
-        return ret;
+        return pagos;
     }
 
     // Borrar los pagos asociados a un comercio
