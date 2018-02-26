@@ -152,15 +152,16 @@ private void printAddresses(HttpServletRequest request, HttpServletResponse resp
             reenvia("/formdatosvisa.jsp", request, response);
             return;
         }
-    VisaDAOWS dao=null;
-    try{
         // Realiza una instanciacion del servicio VisaDaoWS
-        VisaDAOWSService service = new VisaDAOWSService();
-        // Obtenemos el dao a partir de la llamada al servicio
-        dao = service. getVisaDAOWSPort ();
+    VisaDAOWSService service = new VisaDAOWSService();
+    // Obtenemos el dao a partir de la llamada al servicio
+    VisaDAOWS dao = service.getVisaDAOWSPort();
+    String direccion;
+    try{
+
 
         // Obtenemos la direccion del xml
-        String direccion =getServletContext().getInitParameter("service-url");
+        direccion =getServletContext().getInitParameter("service-url");
 
         BindingProvider bp = (BindingProvider) dao;
         bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, direccion);
@@ -187,7 +188,7 @@ private void printAddresses(HttpServletRequest request, HttpServletResponse resp
         // Almacenamos la tarjeta en el pago
         pago.setTarjeta(tarjeta);
 
-        if (! dao.compruebaTarjeta(tarjeta)) {
+        if (dao.compruebaTarjeta(tarjeta) == false) {
             enviaError(new Exception("Tarjeta no autorizada:"), request, response);
             return;
         }
