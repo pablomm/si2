@@ -49,10 +49,13 @@ public class DelPagos extends ServletRaiz {
     * @param request objeto de petici&oacute;n
     * @param response objeto de respuesta
     */
+     @EJB(name="VisaDAOBean", beanInterface=VisaDAOLocal.class)
+    private VisaDAOLocal dao;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 
-      
+      /*
       VisaDAOBean dao=null;
       try{
           // Realiza una instanciacion del servicio VisaDAOBean
@@ -70,6 +73,7 @@ public class DelPagos extends ServletRaiz {
           enviaError(new Exception("Error. Server unreacheable"), request, response);
           return;
       }
+      /*
 
 		/* Se recoge de la petici&oacute;n el par&aacute;metro idComercio*/
 		String idComercio = request.getParameter(PARAM_ID_COMERCIO);

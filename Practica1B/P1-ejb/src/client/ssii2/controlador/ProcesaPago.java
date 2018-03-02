@@ -1,4 +1,4 @@
-/**
+	/**
  * Pr&aacute;ctricas de Sistemas Inform&aacute;ticos II
  * Esta servlet se encarga de recibir los datos de la tarjeta a la que se va
  * a cargar el pago. Es necesario que en la llamada se incluya un valor correcto
@@ -50,6 +50,7 @@ import ssii2.visa.VisaDAOLocal;
 
 //import javax.xml.ws.WebServiceRef;
 //import javax.xml.ws.BindingProvider;
+
 
 /**
  *
@@ -158,25 +159,26 @@ private void printAddresses(HttpServletRequest request, HttpServletResponse resp
             reenvia("/formdatosvisa.jsp", request, response);
             return;
         }
-        // Realiza una instanciacion del servicio VisaDAOBean
-    VisaDAOBeanService service = new VisaDAOBeanService();
-    // Obtenemos el dao a partir de la llamada al servicio
-    VisaDAOBean dao = service.getVisaDAOBeanPort();
-    String direccion;
-    try{
+        /*
+	    // Realiza una instanciacion del servicio VisaDAOBean
+	    VisaDAOBeanService service = new VisaDAOBeanService();
+	    // Obtenemos el dao a partir de la llamada al servicio
+	    VisaDAOBean dao = service.getVisaDAOBeanPort();
+	    String direccion;
+	    try{
 
 
-        // Obtenemos la direccion del xml
-        direccion =getServletContext().getInitParameter("service-url");
+	        // Obtenemos la direccion del xml
+	        direccion =getServletContext().getInitParameter("service-url");
 
-        BindingProvider bp = (BindingProvider) dao;
-        bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, direccion);
-    } catch (Exception e){
-        enviaError(new Exception("Error. Server unreacheable"), request, response);
-        return;
-    }
+	        BindingProvider bp = (BindingProvider) dao;
+	        bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, direccion);
+	    } catch (Exception e){
+	        enviaError(new Exception("Error. Server unreacheable"), request, response);
+	        return;
+	    }
 
-
+		*/
 		HttpSession sesion = request.getSession(false);
 		if (sesion != null) {
 			pago = (PagoBean) sesion.getAttribute(ComienzaPago.ATTR_PAGO);

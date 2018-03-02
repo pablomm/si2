@@ -49,9 +49,12 @@ public class GetPagos extends ServletRaiz {
     * @param request objeto de petici&oacute;n
     * @param response objeto de respuesta
     */
+     @EJB(name="VisaDAOBean", beanInterface=VisaDAOLocal.class)
+    private VisaDAOLocal dao;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-
+      /*
       VisaDAOBean dao=null;
       try{
           // Realiza una instanciacion del servicio VisaDAOBean
@@ -68,15 +71,18 @@ public class GetPagos extends ServletRaiz {
           enviaError(new Exception("Error. Server unreacheable"), request, response);
           return;
       }
+      /*
 
 		/* Se recoge de la petici&oacute;n el par&aacute;metro idComercio*/
 		String idComercio = request.getParameter(PARAM_ID_COMERCIO);
 
 		/* Petici&oacute;n de los pagos para el comercio */
     /* Conversion para que funcione como anteriormente */
+    /*
     List<PagoBean> responsePagos = dao.getPagos(idComercio);
 		PagoBean[] pagos = responsePagos.toArray(new PagoBean[responsePagos.size()]);
-
+    */
+    PagoBean[] pagos = dao.getPagos(idComercio);
         request.setAttribute(ATTR_PAGOS, pagos);
         reenvia("/listapagos.jsp", request, response);
         return;
