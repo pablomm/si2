@@ -19,13 +19,13 @@
        Se puede definir cualquier número de parámetros de inicialización,
        incluyendo cero parámetros.
     -->
-
+  <!--
     <context-param>
-        <param-name>service-url</param-name>
-        <param-value>http://10.1.9.1:8080/P1-ws-ws/VisaDAOBeanService</param-value>
-
+        <param-name>webmaster</param-name>
+        <param-value>myaddress@mycompany.com</param-value>
     </context-param>
-    
+    -->
+
     <!-- Definición de cada uno de los Servlet que componen la aplicación
        incluyendo parámetros de inicialización de cada servlet.
        
