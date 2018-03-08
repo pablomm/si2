@@ -47,6 +47,7 @@ import ssii2.visa.*;
 
 import javax.ejb.EJB;
 import ssii2.visa.VisaDAOLocal;
+import javax.ejb.EJBException;
 
 //import javax.xml.ws.WebServiceRef;
 //import javax.xml.ws.BindingProvider;
@@ -200,8 +201,14 @@ private void printAddresses(HttpServletRequest request, HttpServletResponse resp
             enviaError(new Exception("Tarjeta no autorizada:"), request, response);
             return;
         }
-
-       pago = dao.realizaPago(pago);
+        try{
+             pago = dao.realizaPago(pago);
+        }catch(EJBException e){
+            enviaError( new Exception("Saldo insuciciente"), request, response);
+            sesion.invalidate();
+            return;
+        }
+       
 	     if (  pago == null) {
             enviaError(new Exception("Pago incorrecto"), request, response);
             return;

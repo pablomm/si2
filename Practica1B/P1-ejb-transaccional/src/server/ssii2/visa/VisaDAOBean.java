@@ -82,7 +82,7 @@ public class VisaDAOBean extends DBTester implements VisaDAOLocal {
 
     //TODO
     private static final String UPDATE_SALDO_TARJETA_QRY =
-     				"update tarjeta set saldo = ?"
+     				"update tarjeta set saldo = ?";
     /**************************************************/
 
 
@@ -232,20 +232,37 @@ public class VisaDAOBean extends DBTester implements VisaDAOLocal {
 
             // Obtener conexion
             con = getConnection();
-
+            double saldo;
+            /*Comprobamos que el pago no excede el saldo de la tarjeta*/
+            double importe = pago.getImporte();
+        	String getSaldoQry = SELECT_SALDO_TARJETA_QRY;
+        	errorLog(getSaldoQry);
+        	pstmt=con.prepareStatement(getSaldoQry);
+        	pstmt.setString(1, pago.getTarjeta().getNumero());
+        	ResultSet rSaldo = pstmt.executeQuery();
+        	if (rSaldo.next()){
+        		saldo = rSaldo.getDouble("saldo");
+        		if(saldo < importe){
+        			/* Pago denegado*/
+        			return null;
+        		}
+        	}else{
+            	throw new EJBException("Tarjeta invalida");
+        	}
+        	/*Pasamos a actualizar el saldo de la tarjeta*/
+        	String updateSaldoQry = UPDATE_SALDO_TARJETA_QRY;
+        	errorLog(updateSaldoQry);
+        	pstmt=con.prepareStatement(updateSaldoQry);
+        	pstmt.setDouble(1, saldo-importe);
+        	pstmt.setString(2, pago.getTarjeta().getNumero());
+        	pstmt.execute();
             // Insertar en la base de datos el pago
 
             /* TODO Usar prepared statement si
                isPrepared() == true */
             /**************************************************/
             if (isPrepared() == true) {
-            	double importe = pago.getImporte();
-            	String getSaldoQry = SELECT_SALDO_TARJETA_QRY;
-            	errorLog(getSaldoQry);
-            	pstmt=con.PreparedStatement(getSaldoQry);
-            	pstmt.setString(pago.getTarjeta().getNuemero())
 
-            	//CONTINUAR , ESTA A MEDIAS
 
 
                String insert  = INSERT_PAGOS_QRY;
