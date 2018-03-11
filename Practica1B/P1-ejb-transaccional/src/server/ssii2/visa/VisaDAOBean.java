@@ -82,7 +82,9 @@ public class VisaDAOBean extends DBTester implements VisaDAOLocal {
 
     //TODO
     private static final String UPDATE_SALDO_TARJETA_QRY =
-     				"update tarjeta set saldo = ?";
+     				"update tarjeta " +
+                    "set saldo = ?" +
+                    " where numeroTarjeta = ?";
     /**************************************************/
 
 
