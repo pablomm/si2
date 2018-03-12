@@ -34,7 +34,7 @@ public class VisaCancelacionJMSBean extends DBTester implements MessageListener 
    private static final String RECTIFICA_PAGO_QRY = "UPDATE tarjeta AS t1" +
                                                      "SET saldo = saldo + importe" +
                                                      "FROM pago WHERE pago.idAutorizacion=?" +
-                                                     "AND pago.numeroTarjeta=t.numeroTarjeta";
+                                                     "AND pago.numeroTarjeta=t1.numeroTarjeta";
 
   public VisaCancelacionJMSBean() {
   }
