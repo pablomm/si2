@@ -31,9 +31,9 @@ public class VisaCancelacionJMSBean extends DBTester implements MessageListener 
 
   private static final String UPDATE_CANCELA_QRY = "UPDATE pago SET codRespuesta=999 WHERE idAutorizacion=?";
 
-  private static final String RECTIFICA_PAGO_QRY = "UPDATE tarjeta AS t1" +
-                                                   "SET saldo = saldo + importe" +
-                                                   "FROM pago WHERE pago.idAutorizacion=?" +
+  private static final String RECTIFICA_PAGO_QRY = "UPDATE tarjeta AS t1 " +
+                                                   "SET saldo = saldo + importe " +
+                                                   "FROM pago WHERE pago.idAutorizacion=? " +
                                                    "AND pago.numeroTarjeta=t1.numeroTarjeta";
 
   public VisaCancelacionJMSBean() {
@@ -59,11 +59,13 @@ public class VisaCancelacionJMSBean extends DBTester implements MessageListener 
               pstmt = con.prepareStatement(UPDATE_CANCELA_QRY);
               pstmt.setInt(1,idAutorizacion);
               pstmt.execute();
+              logger.info("Query1: " + UPDATE_CANCELA_QRY);
 
               // Restauramos el pago de la tarjeta
               pstmt = con.prepareStatement(RECTIFICA_PAGO_QRY);
               pstmt.setInt(1,idAutorizacion);
               pstmt.execute();
+              logger.info("Query2: " + RECTIFICA_PAGO_QRY);
 
           } else {
               logger.warning(

@@ -20,7 +20,8 @@ public class VisaQueueMessageProducer {
     @Resource(mappedName = "jms/VisaPagosQueue")
     private static Queue queue;
 
-    // Método de prueba
+    // Método de prueAutorizacion:	1
+
     public static void browseMessages(Session session)
     {
       try
@@ -58,9 +59,6 @@ public class VisaQueueMessageProducer {
         Session session = null;
         MessageProducer messageProducer = null;
         TextMessage message = null;
-        // Descomentar para acceso jndi
-        // ConnectionFactory connectionFactory = null;
-        // Queue queue = null;
 
         if (args.length != 1) {
           System.err.println("Uso: VisaQueueMessageProducer [-browse | <msg>]");
