@@ -31,10 +31,10 @@ public class VisaCancelacionJMSBean extends DBTester implements MessageListener 
 
   private static final String UPDATE_CANCELA_QRY = "UPDATE pago SET codRespuesta=999 WHERE idAutorizacion=?";
 
-   private static final String RECTIFICA_PAGO_QRY = "UPDATE tarjeta AS t1" +
-                                                     "SET saldo = saldo + importe" +
-                                                     "FROM pago WHERE pago.idAutorizacion=?" +
-                                                     "AND pago.numeroTarjeta=t1.numeroTarjeta";
+  private static final String RECTIFICA_PAGO_QRY = "UPDATE tarjeta AS t1" +
+                                                   "SET saldo = saldo + importe" +
+                                                   "FROM pago WHERE pago.idAutorizacion=?" +
+                                                   "AND pago.numeroTarjeta=t1.numeroTarjeta";
 
   public VisaCancelacionJMSBean() {
   }
