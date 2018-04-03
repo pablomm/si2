@@ -46,7 +46,7 @@ ant limpiar
 ant limpiar-todo
 		</echo>
 	</target>
-    <target name=replegar>
+    <target name="replegar">
         <antcall target="replegar-servicio" />
         <antcall target="replegar-cliente" />
     </target>
