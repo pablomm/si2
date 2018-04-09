@@ -17,7 +17,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">10</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">9500</stringProp>
+        <stringProp name="ThreadGroup.num_threads">2375</stringProp>
         <stringProp name="ThreadGroup.ramp_time">10</stringProp>
         <longProp name="ThreadGroup.start_time">1263751540000</longProp>
         <longProp name="ThreadGroup.end_time">1263751540000</longProp>
@@ -100,12 +100,12 @@
             </elementProp>
             <elementProp name="thinkTimeMin" elementType="Argument">
               <stringProp name="Argument.name">thinkTimeMin</stringProp>
-              <stringProp name="Argument.value">2000</stringProp>
+              <stringProp name="Argument.value">1000</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="thinkTimeMax" elementType="Argument">
               <stringProp name="Argument.name">thinkTimeMax</stringProp>
-              <stringProp name="Argument.value">8000</stringProp>
+              <stringProp name="Argument.value">2000</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>
