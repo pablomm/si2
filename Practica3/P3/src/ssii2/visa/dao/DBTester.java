@@ -22,7 +22,7 @@ public class DBTester {
     // TODO: Definir la cadena de conexion a la base de datos
     /*********************************************************/
     private static final String JDBC_CONNSTRING =
-            "jdbc:postgresql://10.1.9.2:5432/visa";
+            "jdbc:postgresql://10.1.9.1:5432/visa";
     /*********************************************************/
     private static final String JDBC_USER = "alumnodb";
     private static final String JDBC_PASSWORD = "****";
@@ -44,8 +44,8 @@ public class DBTester {
     private int     dsConnectionCount = 0;
     private int     directConnectionCount = 0;
 
-    
-    
+
+
     public DBTester() {
 
         try {
