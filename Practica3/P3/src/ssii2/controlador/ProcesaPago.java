@@ -46,8 +46,6 @@ import javax.servlet.http.HttpSession;
 import ssii2.visa.*;
 import ssii2.visa.dao.VisaDAO;
 
-import System.getProperty;
-import java.net.InetAddress.getLocalHost;
 
 /**
  *

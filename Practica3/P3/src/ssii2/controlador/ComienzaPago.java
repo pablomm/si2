@@ -29,8 +29,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import ssii2.visa.PagoBean;
 
-import System.getProperty;
-import java.net.InetAddress.getLocalHost;
 
 /**
  *
