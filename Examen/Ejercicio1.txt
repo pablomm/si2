@@ -1,0 +1,52 @@
+Ejercicio1 - Pablo Marcos 2401
+
+Resultados de getPagos
+######################################################################
+  + idComercio=1 importeMin=0, importeMax=10000
+
+  Pago con tarjeta
+
+Lista de pagos del comercio 1
+
+idTransaccion	Importe	codRespuesta	idAutorizacion
+1	1.0	000	2
+2	100.0	000	3
+Volver al comercio
+
+Prácticas de Sistemas Informáticos II
+######################################################################
+  + idComercio=1 importeMin=0, importeMax=50
+
+ Pago con tarjeta
+
+Lista de pagos del comercio 1
+
+idTransaccion	Importe	codRespuesta	idAutorizacion
+1	1.0	000	2
+Volver al comercio
+
+Prácticas de Sistemas Informáticos II
+######################################################################
+  + idComercio=1 importeMin=10, importeMax=10000
+ Pago con tarjeta
+
+Lista de pagos del comercio 1
+
+idTransaccion	Importe	codRespuesta	idAutorizacion
+2	100.0	000	3
+Volver al comercio
+
+Prácticas de Sistemas Informáticos II
+########################################################################
+
+
+Fragmento WSDL/XSD con mensaje de entrada de la operacion getPagos
+Se puede obtener desde la ruta http://10.1.9.1:8080/P1-ws-ex-ws/VisaDAOWSService?xsd=1
+
+<xs:complexType name="getPagos">
+<xs:sequence>
+<xs:element name="idComercio" type="xs:string" minOccurs="0"/>
+<xs:element name="importeMin" type="xs:string" minOccurs="0"/>
+<xs:element name="importeMax" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
