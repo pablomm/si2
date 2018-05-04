@@ -1,0 +1,17 @@
+Ejercicio 3 - Pablo Marcos 2401
+
+1. Como hemos comprobado los datos enviados para el pago son correctos y como se observa en la pantalla del 
+   balanceador de carga hay dos estancias en el cluster y ambas están activas y funcionando correctamente.
+   El problema posiblemente sea producido por la falta de afinidad de sesión, pues como se observa en la 
+   pantalla del balanceador de carga tras realizar el pago erróneo ambas instancias han sido utilizadas 
+   para el pago. Al introducir los datos de pago.html (numero de comercio, importe e id de transacción) se 
+   envía un formulario a una de las instancias (supongamos por simplicidad que es la Instancia01), tras esto se
+   crea una cookie en la Instance01 y se redirige a la página para introducir el resto de datos del pago, pero 
+   en este caso el formulario se envía a la Instance02, pues no existe afinidad de sesión, desde esta segunda
+   instancia no se puede acceder a la cookie creada en la Instance01 con los primeros datos del pago y por tanto
+   falló el pago.
+   Este problema se podría haber solucionado activando la afinidad de sesión para que un mismo pago fuera atendido
+   por la misma instancia desde inicio hasta el final.
+
+2. La cookie sería la a) be1afff...d42  la cual no contendría ninguna información sobre la instancia en la que se ha
+   creado y almacenado, debido a la falta de afinidad de sesión.

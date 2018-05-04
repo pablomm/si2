@@ -1,0 +1,16 @@
+Ejercicio2 - Pablo Marcos 2401
+
+1. El punto de saturación se produce en torno a los 1600 usuarios, donde se
+   obtiene un throughput de 514/s.
+   Dentro de la zona de saturación se obtiene un troughput máximo de 530/s
+
+2. Para mejorar el rendimiento se podría aumentar el máximo número de hilos
+   del servidor (HTTP Servce - Max. Thread Count), que en la configuración en 
+   la que se han realizado las pruebas tiene un valor de 5.
+
+3. El máximo valor que podría esperarse en la columna VisaPool UsedCons es 5,
+   pues aunque en la configuración del servidor el máximo numero de conexiones
+   a la base de datos es de 32, al haber un máximo de 5 hilos en el servicio HTTP
+   no se podrían utilizar más de 5 conexiones a la base de datos simultáneamente.
+   De hecho se observa que cuando el servidor se encuentra en el punto de saturación
+   el número medio de conexiones usadas es 4.29 bastante cercano a 5.
