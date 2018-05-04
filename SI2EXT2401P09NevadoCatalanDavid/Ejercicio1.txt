@@ -1,0 +1,30 @@
+Primera busqueda:
+
+Pago con tarjeta
+
+Lista de pagos del comercio 1
+idTransaccion 	Importe 	codRespuesta 	idAutorizacion
+2 	100.0 	000 	1
+1 	1.0 	000 	2
+
+
+Segunda busqueda;
+
+Pago con tarjeta
+
+Lista de pagos del comercio 1
+idTransaccion 	Importe 	codRespuesta 	idAutorizacion
+1 	1.0 	000 	2
+
+Tecera busqueda:
+
+Pago con tarjeta
+
+Lista de pagos del comercio 1
+idTransaccion 	Importe 	codRespuesta 	idAutorizacion
+2 	100.0 	000 	1
+
+Definiciones de los nuevos mensajes de entrada de GetPagos:
+
+<xs:element name="importeMin" type="xs:string" minOccurs="0"/>
+<xs:element name="importeMax" type="xs:string" minOccurs="0"/>

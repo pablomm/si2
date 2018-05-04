@@ -1,0 +1,11 @@
+1.
+Observando la primera gráfica podemos decir empieza a perder su comportamiento lineal con 1600 usuarios y que algo más tarde, en torno a 1700 usuarios, llega a la zona de saturación.
+Con unos 2000 usuarios, en la zona de saturación, se alcanza el throughput máximo, que es aproximadamente de 540
+
+2.
+Para alcanzar un mayor rendimiento sería conveniente aumentar el número de hilos dedicados a atender a las peticiones HTTP. Es decir, aumentar el parámetro HTTP Service Max.Thread Count. En función de los recursos de nuestro servidor podremos ajustar este valor. Podríamos aumentar el valor hasta 100 y realizar mediciones de nuevo para ver cual es el nuevo factor limitante. Puede que tras este cambio, lo que limite el rendimiento sean la conexiones de VisaPool. En tal caso sería conveniente aumentar Visa Pool Max.Pool size
+
+
+3.
+Como en la configuración inicial se especifica Visa Pool Max.Pool size = 32 tenemos que el número de conexiones utilizadas no superara nunca 32.
+Sin embargo, lo que esta limitando el numero de conexiones de Visa Pool son las conexiones HTTP. Como estas últimas tienen un máximo de 5 hilos y en P1-base cada petición HTTP solo requiere 1 conexión de VisaPool el número máximo de VisaPool used Cons no superará 5.

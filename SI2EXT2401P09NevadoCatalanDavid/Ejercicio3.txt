@@ -1,0 +1,10 @@
+1.
+
+Lo que ha ocurrido es lo siguiente:
+A pesar de que el balanceador esté correctamente configurado, no se ha configurada la afinidad de sesión. Esto da lugar a que para la primera parte parte de la petición (formulario de Idtransaccion, Idcomercio, Importe) se procese en una instancia y la segunda parte (formulario con información acerca de la tarjeta) se procese en la otra. Sabemos que ha ocurrido esto porque en la segunda captura de pantalla vemos que cada instancia ha sido escogida 1 vez.
+Al intentar terminal el pago, la segunda instancia, que es independiente de la primera y no comparte información con ella, devuelve un error porque no tiene todos los datos necesarios para realizar el pago.
+
+2.
+
+Al no tener configurada la afinidad de sesión la cookie será la a. Es decir, la que no tiene información acerca de la instancia en la que se a ejecutado.
+La cookie b. se obtiene cuando modificamos el parámetro jvmRoute de Glassfish para que incluya la instancia en el parámetro JSESSIONID de la cookie. Esta modificación evita el fallo ocurrido ya que hace que la segunda parte del pago se procese en la misma instancia donde se procesó la primera.
